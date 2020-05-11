@@ -1,0 +1,31 @@
+library(data.table)
+library(dplyr)
+
+unzip the dataset.zip
+unzip(zipfile="./data/Dataset.zip",exdir="./data")
+unzip(zipfile="./midtermdata/Dataset.zip",exdir="./midtermdata")
+
+check the zip file
+list.files("D:/rlang/midtermdata")
+
+define the path
+pathdata = file.path("./midtermdata", "UCI HAR Dataset")
+
+create the file
+files = list.files(pathdata, recursive=TRUE)
+
+read table
+xtrain = read.table(file.path(pathdata, "train", "X_train.txt"),header = FALSE)
+ytrain = read.table(file.path(pathdata, "train", "y_train.txt"),header = FALSE)
+subject_train = read.table(file.path(pathdata, "train", "subject_train.txt"),header = FALSE)
+
+read test table
+xtest = read.table(file.path(pathdata, "test", "X_test.txt"),header = FALSE)
+ytest = read.table(file.path(pathdata, "test", "y_test.txt"),header = FALSE)
+subject_test = read.table(file.path(pathdata, "test", "subject_test.txt"),header = FALSE)
+
+read the features data
+features = read.table(file.path(pathdata, "features.txt"),header = FALSE)
+
+read activity labels data
+activityLabels = read.table(file.path(pathdata, "activity_labels.txt"),header = FALSE)
